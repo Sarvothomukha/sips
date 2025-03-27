@@ -13,7 +13,7 @@
   <meta name="author" content="" />
 
   <title>Sarvothomukha</title>
-
+  <link rel="shortcut icon" href="images/Sarvothomukhalogo.png">
 
 
   <!-- bootstrap core css -->
@@ -34,6 +34,55 @@
 
 
   <link rel="stylesheet" href="css/css-circular-prog-bar.css">
+
+  <style>
+    /* Modal Styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 100%;
+    }
+
+    /* Caption of the image */
+    .modal-caption {
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    /* Close button */
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
 
 
 </head>
@@ -146,48 +195,80 @@
   <!-- Photo Grid -->
 <div class="row"> 
   <div class="column">
-    <img src="gallery/spcrp.JPG" style="width:100%">
-    <img src="gallery/sp1d.JPG" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0005.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0006.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0007.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0008.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0009.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0010.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0011.jpg" style="width:100%">
+    <img src="gallery/spcrp.JPG" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/sp1d.JPG" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0005.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0006.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0007.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0008.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0009.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0010.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0011.jpg" style="width:100%" onclick="openModal(this)">
   </div>
   <div class="column">
-    <img src="gallery/sp2d.JPG" style="width:100%">
-    <img src="gallery/sppl.JPG" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0012.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0013.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0014.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0015.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0029.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0017.jpg" style="width:100%">
+    <img src="gallery/sp2d.JPG" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/sppl.JPG" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0012.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0013.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0014.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0015.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0029.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0017.jpg" style="width:100%" onclick="openModal(this)">
   </div>  
   <div class="column">
-    <img src="gallery/spps.JPG" style="width:100%">
-    <img src="gallery/spsc.JPG" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0018.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0019.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0020.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0025.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0026.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0027.jpg" style="width:100%">
+    <img src="gallery/spps.JPG" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/spsc.JPG" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0018.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0019.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0020.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0025.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0026.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0027.jpg" style="width:100%" onclick="openModal(this)">
     
   </div>
   <div class="column">
-    <img src="gallery/spp.JPG" style="width:100%">
-    <img src="gallery/spst.JPG" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0028.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0030.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0031.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0032.jpg" style="width:100%">
-    <img src="gallery/IMG-20230911-WA0033.jpg" style="width:100%">
+    <img src="gallery/spp.JPG" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/spst.JPG" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0028.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0030.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0031.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0032.jpg" style="width:100%" onclick="openModal(this)">
+    <img src="gallery/IMG-20230911-WA0033.jpg" style="width:100%" onclick="openModal(this)">
    
   </div>
 </div>
+<div id="imageModal" class="modal">
+  <span class="close-btn" onclick="closeModal()">×</span>
+  <img class="modal-content" id="modalImage">
+  <div class="modal-caption" id="caption"></div>
+</div>
+
+<script>
+  // Function to open the modal
+  function openModal(img) {
+      var modal = document.getElementById("imageModal");
+      var modalImg = document.getElementById("modalImage");
+      var captionText = document.getElementById("caption");
+      
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      captionText.innerHTML = img.alt; // You can set the caption using the alt attribute of the image.
+  }
+
+  // Function to close the modal
+  function closeModal() {
+      var modal = document.getElementById("imageModal");
+      modal.style.display = "none";
+  }
+
+  // Close the modal if the user clicks anywhere outside of the image
+  window.onclick = function (event) {
+      var modal = document.getElementById("imageModal");
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+</script>
 
 
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
