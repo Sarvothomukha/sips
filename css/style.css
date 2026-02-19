@@ -9,7 +9,7 @@ body {
 .about_sections{
   background-image: url(../images/sipsfront.png);
   background-attachment: fixed;
-  background-size: 70%;
+  background-size: 67%;
   align-items: center;
   align-content: center;
   background-position: center;
@@ -528,5 +528,6 @@ table ,th ,td{
   width: 100%;
   margin-left: -10px;
 }
+
 
 
