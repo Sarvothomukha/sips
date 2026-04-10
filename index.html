@@ -208,46 +208,36 @@
 
   const ACT_ICONS = ['📚','💻','🥋','🎵','🧘','🙏','⭐','🎨'];
 
-  async function init() {
-    try {
-      // 1. Settings & Footer
-      const s = await SIPS.get('settings');
-      document.title = s.siteTitle;
-      setHtml('footerText', s.footer);
-      if(s.primaryColor) document.documentElement.style.setProperty('--sky', s.primaryColor);
+  async function applyGalleryPreview() {
+  const galleryGrid = document.getElementById('galleryGrid');
+  if (!galleryGrid) return;
 
-      // 2. Hero Section
-      const h = await SIPS.get('hero');
-      setTxt('heroBadge', '✦ ' + h.badge);
-      setHtml('heroTitle', h.title.replace('Sarvothomukha', '<em>Sarvothomukha</em>'));
-      setTxt('heroTagline', h.tagline);
-      setTxt('heroCtaBtn', h.ctaText);
-      setTxt('stat1val', h.stat1val); setTxt('stat1lbl', h.stat1lbl);
-      setTxt('stat2val', h.stat2val); setTxt('stat2lbl', h.stat2lbl);
-      setTxt('stat3val', h.stat3val); setTxt('stat3lbl', h.stat3lbl);
+  // Wait for Firebase data
+  const fullGallery = await SIPS.get('gallery');
+  
+  // Take first 7 images for the home page preview
+  const g = fullGallery.slice(0, 7);
 
-      // 3. Admissions
-      const adm = await SIPS.get('admission');
-      const banner = document.getElementById('admBanner');
-      if(banner) banner.style.display = adm.show ? 'flex' : 'none';
-      setTxt('admYear', adm.year);
-      setTxt('admPhone1', adm.phone1);
-      setTxt('admPhone2', adm.phone2);
-      setTxt('admBtn', adm.btnText);
+  if (g.length === 0) {
+    galleryGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--muted);">No photos available yet.</p>`;
+    return;
+  }
 
-      // 4. About Preview
-      const ab = await SIPS.get('about');
-      const abImg = document.getElementById('aboutImg');
-      if(abImg) abImg.src = ab.imageUrl;
-      setTxt('aboutEst', 'Est. ' + ab.founded);
-      setTxt('aboutFounded', ab.founded);
-      setTxt('aboutDesc', ab.description);
-      const featBox = document.getElementById('aboutFeatures');
-      if(featBox) {
-        featBox.innerHTML = ab.features.slice(0, 4).map((f, i) => 
-          `<div class="feature-chip"><div class="icon">${ACT_ICONS[i] || '⭐'}</div>${f}</div>`
-        ).join('');
-      }
+  galleryGrid.innerHTML = g.map((x, i) => {
+    // Check if it's the first item to make it a "Big Feature" tile
+    const isLarge = i === 0;
+    const itemStyle = isLarge ? 'grid-column: span 2; grid-row: span 2;' : '';
+    
+    return `
+      <div class="gallery-item" style="${itemStyle}">
+        <img src="${x.src}" alt="${x.alt}" loading="lazy" 
+             onerror="this.parentElement.style.display='none'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">${x.cat || 'School'}</span>
+        </div>
+      </div>`;
+  }).join('');
+}
 
       // 5. Teachers/Leadership
       const t = await SIPS.get('teachers');
