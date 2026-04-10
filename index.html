@@ -199,7 +199,10 @@
   </div>
 </footer>
 
-<script src="sips-data.js"></script>
+<script type="module">
+  import { SIPS } from './sips-data.js';
+  // then use: const data = await SIPS.get('hero');
+</script>
 <script>
 const ACT_ICONS=['📚','💻','🥋','🎵','🧘','🙏','⭐','🎨'];
 document.addEventListener('DOMContentLoaded',()=>{
