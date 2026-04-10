@@ -201,121 +201,115 @@
 
 <script type="module">
   import { SIPS } from './sips-data.js';
-  // then use: const data = await SIPS.get('hero');
-</script>
-<script>
-const ACT_ICONS=['📚','💻','🥋','🎵','🧘','🙏','⭐','🎨'];
-document.addEventListener('DOMContentLoaded',()=>{
-  applySettings(); applyHero(); applyAdmission(); applyAbout();
-  applyTeachers(); applyGalleryPreview(); applyAnnouncements(); applyContact();
-  initReveal();
 
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  menuToggle.addEventListener('click', () => { navLinks.classList.toggle('show'); });
-  document.querySelectorAll('#navLinks a').forEach(link => {
-    link.addEventListener('click', () => { navLinks.classList.remove('show'); });
-  });
-});
+  // Helper to get element values safely
+  const setTxt = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+  const setHtml = (id, val) => { const el = document.getElementById(id); if(el) el.innerHTML = val; };
 
-function applySettings(){
-  const s=SIPS.get('settings');
-  document.getElementById('metaTitle').textContent=s.siteTitle;
-  document.getElementById('metaDesc').content=s.metaDesc||'';
-  document.getElementById('footerText').innerHTML=s.footer
-    .replace('Sarvothomukha International Public School','<strong>Sarvothomukha International Public School</strong>')
-    .replace('ABTS Technologies','<strong>ABTS Technologies</strong>');
-  if(s.primaryColor) document.documentElement.style.setProperty('--sky',s.primaryColor);
-}
-function applyHero(){
-  const h=SIPS.get('hero');
-  document.getElementById('heroBadge').textContent='✦ '+h.badge;
-  const parts=h.title.split(' ');
-  document.getElementById('heroTitle').innerHTML='Welcome to<br><em>'+parts[0]+'</em><br>'+parts.slice(1).join(' ');
-  document.getElementById('heroTagline').textContent=h.tagline;
-  document.getElementById('heroCtaBtn').textContent=h.ctaText;
-  ['1','2','3'].forEach(n=>{
-    document.getElementById('stat'+n+'val').textContent=h['stat'+n+'val'];
-    document.getElementById('stat'+n+'lbl').textContent=h['stat'+n+'lbl'];
+  const ACT_ICONS = ['📚','💻','🥋','🎵','🧘','🙏','⭐','🎨'];
+
+  async function init() {
+    try {
+      // 1. Settings & Footer
+      const s = await SIPS.get('settings');
+      document.title = s.siteTitle;
+      setHtml('footerText', s.footer);
+      if(s.primaryColor) document.documentElement.style.setProperty('--sky', s.primaryColor);
+
+      // 2. Hero Section
+      const h = await SIPS.get('hero');
+      setTxt('heroBadge', '✦ ' + h.badge);
+      setHtml('heroTitle', h.title.replace('Sarvothomukha', '<em>Sarvothomukha</em>'));
+      setTxt('heroTagline', h.tagline);
+      setTxt('heroCtaBtn', h.ctaText);
+      setTxt('stat1val', h.stat1val); setTxt('stat1lbl', h.stat1lbl);
+      setTxt('stat2val', h.stat2val); setTxt('stat2lbl', h.stat2lbl);
+      setTxt('stat3val', h.stat3val); setTxt('stat3lbl', h.stat3lbl);
+
+      // 3. Admissions
+      const adm = await SIPS.get('admission');
+      const banner = document.getElementById('admBanner');
+      if(banner) banner.style.display = adm.show ? 'flex' : 'none';
+      setTxt('admYear', adm.year);
+      setTxt('admPhone1', adm.phone1);
+      setTxt('admPhone2', adm.phone2);
+      setTxt('admBtn', adm.btnText);
+
+      // 4. About Preview
+      const ab = await SIPS.get('about');
+      const abImg = document.getElementById('aboutImg');
+      if(abImg) abImg.src = ab.imageUrl;
+      setTxt('aboutEst', 'Est. ' + ab.founded);
+      setTxt('aboutFounded', ab.founded);
+      setTxt('aboutDesc', ab.description);
+      const featBox = document.getElementById('aboutFeatures');
+      if(featBox) {
+        featBox.innerHTML = ab.features.slice(0, 4).map((f, i) => 
+          `<div class="feature-chip"><div class="icon">${ACT_ICONS[i] || '⭐'}</div>${f}</div>`
+        ).join('');
+      }
+
+      // 5. Teachers/Leadership
+      const t = await SIPS.get('teachers');
+      setHtml('teachersGrid', t.map(x => `
+        <div class="teacher-card reveal">
+          <div class="teacher-avatar">${x.name[0]}</div>
+          <div class="teacher-role">${x.role}</div>
+          <div class="teacher-name">${x.name}</div>
+          <div class="teacher-qual">${x.qual}</div>
+        </div>`).join(''));
+
+      // 6. Contact Info
+      const c = await SIPS.get('contact');
+      setTxt('cPhone1', c.phone1); setTxt('cPhone2', c.phone2);
+      setTxt('cAddress', c.address);
+      setTxt('cTime', c.timeStart + ' – ' + c.timeEnd);
+
+      // Re-trigger animations
+      initReveal();
+      
+    } catch (error) {
+      console.error("Initialization failed:", error);
+    }
+  }
+
+  // Mobile Menu Logic
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('show');
   });
-}
-function applyAdmission(){
-  const a=SIPS.get('admission');
-  document.getElementById('admBanner').style.display=a.show?'':'none';
-  document.getElementById('admYear').textContent=a.year;
-  document.getElementById('admPhone1').textContent=a.phone1;
-  document.getElementById('admPhone2').textContent=a.phone2;
-  document.getElementById('admBtn').textContent=a.btnText;
-}
-function applyAbout(){
-  const a=SIPS.get('about');
-  document.getElementById('aboutImg').src=a.imageUrl;
-  document.getElementById('aboutEst').textContent='Est. '+a.founded;
-  document.getElementById('aboutFounded').textContent=a.founded;
-  document.getElementById('aboutDesc').textContent=a.description;
-  document.getElementById('ytLink').href=a.youtubeUrl;
-  const acts=(a.activities||[]).slice(0,6);
-  document.getElementById('aboutFeatures').innerHTML=acts.map((f,i)=>`<div class="feature-chip"><div class="icon">${ACT_ICONS[i]||'⭐'}</div>${f}</div>`).join('');
-}
-function applyTeachers(){
-  const t=SIPS.get('teachers');
-  document.getElementById('teachersGrid').innerHTML=t.map(x=>`
-    <div class="teacher-card reveal">
-      <div class="teacher-avatar">${x.name[0]}</div>
-      <div class="teacher-role">${x.role}</div>
-      <div class="teacher-name">${x.name}</div>
-      <div class="teacher-qual">${x.qual}</div>
-    </div>`).join('');
-}
-function applyGalleryPreview(){
-  const g=SIPS.get('gallery').slice(0,7);
-  document.getElementById('galleryGrid').innerHTML=g.map((x,i)=>`
-    <div class="gallery-item" ${i===0?'style="grid-column:span 2;grid-row:span 2;"':''}>
-      <img src="${x.src}" alt="${x.alt}" loading="lazy" onerror="this.style.display='none'"/>
-      <div class="gallery-overlay"><span class="gallery-tag">${x.cat}</span></div>
-    </div>`).join('');
-}
-function applyAnnouncements(){
-  const anns=SIPS.get('announcements');
-  const strip=document.getElementById('annStrip');
-  if(!anns.length){strip.style.display='none';return;}
-  strip.style.display='';
-  document.getElementById('annList').innerHTML=anns.slice(0,3).map(a=>`
-    <div class="ann-item">
-      <div class="ann-icon-box">${a.icon||'📢'}</div>
-      <div><div class="ann-body-title">${a.title}</div><div class="ann-body-text">${a.text}</div><div class="ann-date">📅 ${a.date}</div></div>
-    </div>`).join('');
-}
-function applyContact(){
-  const c=SIPS.get('contact');
-  document.getElementById('cPhone1').textContent=c.phone1;
-  document.getElementById('cPhone2').textContent=c.phone2;
-  document.getElementById('cAddress').textContent=c.address;
-  document.getElementById('cTime').textContent=c.timeStart+' – '+c.timeEnd;
-  if(c.youtube) document.getElementById('footerYT').href=c.youtube;
-}
-function submitEnquiry(){
-  const name=document.getElementById('fName').value.trim();
-  const phone=document.getElementById('fPhone').value.trim();
-  if(!name||!phone){alert('Please enter your name and phone number.');return;}
-  const enqs=SIPS.get('enquiries');
-  const now=new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'});
-  enqs.unshift({
-    name, phone,
-    email: document.getElementById('fEmail').value.trim(),
-    type:  document.getElementById('fType').value,
-    msg:   document.getElementById('fMsg').value.trim(),
-    date:  now,
-    status:'pending'
-  });
-  SIPS.set('enquiries',enqs);
-  document.getElementById('formContent').style.display='none';
-  document.getElementById('formSuccess').style.display='block';
-}
-function initReveal(){
-  const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('visible')),{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
-}
+
+  // Reveal Animation Logic
+  function initReveal() {
+    const obs = new IntersectionObserver(e => e.forEach(x => {
+      if(x.isIntersecting) x.target.classList.add('visible');
+    }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+  }
+
+  // Expose Enquiry function to window for the button click
+  window.submitEnquiry = async function() {
+    const name = document.getElementById('fName').value.trim();
+    const phone = document.getElementById('fPhone').value.trim();
+    if(!name || !phone) { alert('Please enter your name and phone number.'); return; }
+    
+    const enqs = await SIPS.get('enquiries') || [];
+    enqs.unshift({
+      name, phone,
+      email: document.getElementById('fEmail').value,
+      type: document.getElementById('fType').value,
+      msg: document.getElementById('fMsg').value,
+      date: new Date().toLocaleDateString('en-IN'),
+      status: 'pending'
+    });
+    
+    const success = await SIPS.set('enquiries', enqs);
+    if(success) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  };
+
+  init();
 </script>
 </body>
 </html>
