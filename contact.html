@@ -215,7 +215,10 @@ footer p{font-size:13px;color:var(--muted);}footer p strong{color:var(--sky);}
     </a>
 </footer>
 
-<script src="sips-data.js"></script>
+<script type="module">
+  import { SIPS } from './sips-data.js';
+  // then use: const data = await SIPS.get('hero');
+</script>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
   applySettings(); applyContact(); applyAdmission(); initReveal();
