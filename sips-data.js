@@ -41,7 +41,7 @@ const SIPS = {
       description: 'Welcome to Sarvothomukha International Public School. Founded in 2018 by Chikkaguddaiah. Recognized by the Government of Karnataka, our state-of-the-art facilities provide a nurturing environment for students to explore, learn, and grow.',
       timeStart: '9:30 AM',
       timeEnd:   '4:20 PM',
-      imageUrl:  '../images/building.JPG',
+      imageUrl:  '../images/building.jpg',
       youtubeUrl:'https://www.youtube.com/@SarvothomukhaInternationalpubl/videos',
       subjects:  ['Kannada','English','Hindi','Mathematics','Science','Social Studies','Physical Education'],
       activities:['Music','Taekwondo','Computer Lab','Library'],
