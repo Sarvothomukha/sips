@@ -369,13 +369,20 @@
   /* ── GALLERY ─────────────────────────────────── */
   .gallery { background: white; }
  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 220px; /* Changed from template-rows to auto-rows */
-    gap: 16px;
-    margin-top: 56px;
-    min-height: 440px; /* Added this to keep the space open while loading */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px; 
+  gap: 16px;
+  margin-top: 56px;
+  min-height: 440px; 
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
   }
+}
   .gallery-item {
     border-radius: 16px; overflow: hidden; position: relative;
     background: linear-gradient(135deg, var(--sky-pale), var(--border));
