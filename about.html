@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About — Sarvothomukha International Public School</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/styles.css"/>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo-circle">
+      <img src="../images/sarvothomukhalogo.png" alt="logo">
+    </div>
+    <div class="nav-name">Sarvothomukha<br><span>International Public School</span></div>
+  </a>
+
+  <button class="menu-toggle" id="menuToggle">☰</button>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>About</span></div>
+  <h1>About Our <em>School</em></h1>
+  <p>Learn about the vision, values, and vibrant community that makes Sarvothomukha a place where every child thrives.</p>
+</div>
+
+<section id="overview">
+  <div class="trust-inner">
+    <div class="trust-img-wrap reveal">
+      <div class="trust-img-frame">
+        <div class="fallback">🏫</div>
+        <img id="schoolImg" src="../images/sipsfront.jpg" alt="School" onerror="this.style.opacity='0'"/>
+      </div>
+      <div class="trust-badge">
+        <div class="icon">🏛️</div>
+        <div><div class="num" id="trustRecognition">Govt. Recognized</div><div class="lbl">State of Karnataka</div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-label">Our Foundation</div>
+      <h2 class="section-title" id="trustName">Sri Lakshmi Ranganathaswamy Education Trust (R.)</h2>
+      <p class="section-desc" id="aboutDesc">Welcome to Sarvothomukha International Public School. Founded in 2018 by Chikkaguddaiah, recognized by the Government of Karnataka.</p>
+      <div class="meta-items" id="metaItems"></div>
+      <div class="timing-pill">🕘 School Timings: <strong id="timingText">9:30 AM – 4:20 PM</strong></div>
+      <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;">
+        <a id="ytLinkAbout" href="#" class="btn-primary" target="_blank">Watch on YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="subjects-section">
+  <div class="subjects-header reveal">
+    <div class="section-label">Curriculum</div>
+    <h2 class="section-title">What We Teach</h2>
+    <p class="section-desc" style="max-width:520px;margin:14px auto 0;">A well-rounded curriculum designed to build academic excellence, physical fitness, and creative expression.</p>
+  </div>
+  <div class="subjects-grid">
+    <div class="subject-card reveal">
+      <div class="subject-card-icon">📖</div>
+      <h3>Core Academic Subjects</h3>
+      <ul class="subject-list" id="subjectsList"></ul>
+    </div>
+    <div class="subject-card reveal">
+      <div class="subject-card-icon">🎨</div>
+      <h3>Common Education for All</h3>
+      <ul class="subject-list" id="activitiesList"></ul>
+    </div>
+    <div class="subject-card reveal">
+      <div class="subject-card-icon">⭐</div>
+      <h3>Special Features</h3>
+      <ul class="subject-list" id="featuresList"></ul>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="features-header reveal">
+    <div class="section-label">Facilities</div>
+    <h2 class="section-title">Everything a Child Needs</h2>
+    <p class="section-desc" style="max-width:480px;margin:14px auto 0;">From classrooms to playgrounds, we provide a holistic environment for every kind of learner.</p>
+  </div>
+  <div class="features-grid" id="facilitiesGrid"></div>
+</section>
+
+<div class="trust-strip">
+  <h2>Admissions Open for <span id="stripYear">2026–2027</span></h2>
+  <p>Give your child the gift of a world-class education. Contact us today.</p>
+  <div class="strip-stats">
+    <div class="strip-stat"><div class="num" id="stripFounded">2018</div><div class="lbl">Year Founded</div></div>
+    <div class="strip-stat"><div class="num">PreKG–Class 10</div><div class="lbl">Grades Offered</div></div>
+    <div class="strip-stat"><div class="num">100%</div><div class="lbl">Govt. Recognized</div></div>
+    <div class="strip-stat"><div class="num" id="stripActivities">8+</div><div class="lbl">Activities & Clubs</div></div>
+  </div>
+  <div style="margin-top:36px;">
+    <a href="contact.html" style="background:white;color:var(--sky-deep);border-radius:50px;padding:14px 36px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,0.15);display:inline-block;">Contact Us →</a>
+  </div>
+</div>
+
+<footer>
+  <p id="footerText">© 2025 <strong>Sarvothomukha International Public School</strong>. All rights reserved. Powered by <strong>ABTS Technologies</strong>.</p>
+
+  <h4 style="color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Follow Us</h4>
+  <div class="social-links">
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@SarvothomukhaInternationalpubl/videos" target="_blank" class="social-btn youtube" id="footerYT">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/>
+      </svg>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61572317934375" target="_blank" class="social-btn facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5v-2.2c0-2.5 1.5-3.9 3.8-3.9l2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/918088854101" target="_blank" class="social-btn whatsapp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M20.5 3.5A12 12 0 0 0 2 17.9L0 24l6.3-1.6A12 12 0 1 0 20.5 3.5zm-8.5 18a10 10 0 0 1-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A10 10 0 1 1 12 21.5zm5.5-7.5c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-1.3 1-1.5 1.1-.3.1-.6 0a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4A3.5 3.5 0 0 0 6 9.6a6.1 6.1 0 0 0 1.3 3.2 14 14 0 0 0 5.3 4.7c.7.3 1.3.5 1.7.6a4.1 4.1 0 0 0 1.9.1 3.2 3.2 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.1-.3-.2-.6-.4z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/sarvothomukha2018/" target="_blank" class="social-btn instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/>
+      </svg>
+    </a>
+</footer>
+
+<script src="sips-data.js"></script>
+<script>
+const FACILITY_ICONS=['📚','🥋','💻','🎵','🧘','⚽','🚌','🏛️','🎨','🔬'];
+document.addEventListener('DOMContentLoaded',()=>{
+  applySettings(); applyAbout(); applyAdmission(); initReveal();
+});
+function applySettings(){
+  const s=SIPS.get('settings');
+  document.getElementById('footerText').innerHTML=s.footer.replace('Sarvothomukha International Public School','<strong>Sarvothomukha International Public School</strong>').replace('ABTS Technologies','<strong>ABTS Technologies</strong>');
+  if(s.primaryColor) document.documentElement.style.setProperty('--sky',s.primaryColor);
+}
+function applyAbout(){
+  const a=SIPS.get('about');
+  document.getElementById('schoolImg').src=a.imageUrl;
+  document.getElementById('trustName').textContent=a.trust;
+  document.getElementById('trustRecognition').textContent=a.recognition;
+  document.getElementById('aboutDesc').textContent=a.description;
+  document.getElementById('timingText').textContent=a.timeStart+' – '+a.timeEnd;
+  document.getElementById('ytLinkAbout').href=a.youtubeUrl;
+  if(a.youtube) document.getElementById('footerYT').href=a.youtubeUrl;
+  document.getElementById('metaItems').innerHTML=[
+    'Founded in '+a.founded,
+    a.recognition,
+    'State Syllabus'
+  ].map(m=>`<div class="meta-item"><div class="meta-dot"></div><span>${m}</span></div>`).join('');
+  document.getElementById('stripFounded').textContent=a.founded;
+  const allActs=[...(a.activities||[]),...(a.features||[])];
+  document.getElementById('stripActivities').textContent=allActs.length+'+';
+  document.getElementById('subjectsList').innerHTML=(a.subjects||[]).map(s=>`<li>${s}</li>`).join('');
+  document.getElementById('activitiesList').innerHTML=(a.activities||[]).map(s=>`<li>${s}</li>`).join('');
+  document.getElementById('featuresList').innerHTML=(a.features||[]).map(s=>`<li>${s}</li>`).join('');
+  const allFacilities=[...(a.activities||[]),...(a.features||[])].slice(0,8);
+  document.getElementById('facilitiesGrid').innerHTML=allFacilities.map((f,i)=>`
+    <div class="feature-card reveal"><span class="f-icon">${FACILITY_ICONS[i]||'⭐'}</span><h4>${f}</h4></div>`).join('');
+}
+function applyAdmission(){
+  const a=SIPS.get('admission');
+  document.getElementById('stripYear').textContent=a.year;
+}
+function initReveal(){
+  const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('visible')),{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+   const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+  document.querySelectorAll('#navLinks a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('show');
+  });
+});
+}
+</script>
+</body>
+</html>
