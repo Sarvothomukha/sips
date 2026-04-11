@@ -36,7 +36,7 @@ const DEFAULTS = {
     description: 'Welcome to Sarvothomukha International Public School.',
     timeStart: '9:30 AM', timeEnd: '4:00 PM',
     imageUrl: './images/building.jpg',
-    youtubeUrl: 'https://www.youtube.com/channel/UCAlCk_tKREJD3knRC2QBtkw',
+    youtubeUrl: 'https://www.youtube.com/@SarvothomukhaInternationalpubl/videos',
     subjects: ['Kannada','English','Hindi','Mathematics','Science','Social Studies','Physical Education'],
     activities: ['Music','Taekwondo','Computer Lab','Library'],
     features: ['Qualified & Dedicated Teachers','Wide & Ventilated Class Rooms','Individual Care for Every Child','Playground for Sports','Computer Education','Vehicle Facility']
