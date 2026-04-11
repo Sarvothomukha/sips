@@ -5,21 +5,28 @@
 <title>About — Sarvothomukha International Public School</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="./css/styles.css"/>
+<style>
+  .subjects-section{background:var(--sky-pale);} .subjects-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px;}
+  .subject-card{background:white;border-radius:20px;padding:32px 28px;border:1px solid var(--border);position:relative;overflow:hidden;}
+  .subject-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--sky),var(--sky-deep));}
+  .subject-card-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--sky-pale),var(--sky));display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px;}
+  .subject-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--dark);margin-bottom:16px;}
+  .subject-list{list-style:none;display:flex;flex-direction:column;gap:10px;} .subject-list li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mid);}
+  .features-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:20px;}
+  .feature-card{background:var(--sky-pale);border:1px solid var(--border);border-radius:18px;padding:28px 22px;text-align:center;}
+  .feature-card .f-icon{font-size:36px;margin-bottom:14px;display:block;} .feature-card h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--dark);}
+</style>
 </head>
 <body>
 <nav>
   <a href="index.html" class="nav-brand">
-    <div class="nav-logo-circle">
-      <img src="./images/sarvothomukhalogo.png" alt="logo">
-    </div>
+    <div class="nav-logo-circle"><img src="./images/sarvothomukhalogo.png" alt="logo"></div>
     <div class="nav-name">Sarvothomukha<br><span>International Public School</span></div>
   </a>
-
   <button class="menu-toggle" id="menuToggle">☰</button>
-
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
+    <li><a href="about.html" class="active">About</a></li>
     <li><a href="gallery.html">Gallery</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -32,77 +39,35 @@
 </div>
 
 <section id="overview">
-  <div class="trust-inner">
-    <div class="trust-img-wrap reveal">
-      <div class="trust-img-frame">
-        <div class="fallback">🏫</div>
-        <img id="schoolImg" src="./images/sipsfront.jpg" alt="School" onerror="this.style.opacity='0'"/>
-      </div>
-      <div class="trust-badge">
-        <div class="icon">🏛️</div>
-        <div><div class="num" id="trustRecognition">Govt. Recognized</div><div class="lbl">State of Karnataka</div></div>
-      </div>
-    </div>
+  <div class="about-inner">
+    <div class="about-img-bg reveal"><img id="schoolImg" src="./images/building.jpg" alt="School" onerror="this.style.opacity='0'"/></div>
     <div class="reveal">
       <div class="section-label">Our Foundation</div>
-      <h2 class="section-title" id="trustName">Sri Lakshmi Ranganathaswamy Education Trust (R.)</h2>
-      <p class="section-desc" id="aboutDesc">Welcome to Sarvothomukha International Public School. Founded in 2018 by Chikkaguddaiah, recognized by the Government of Karnataka.</p>
-      <div class="meta-items" id="metaItems"></div>
-      <div class="timing-pill">🕘 School Timings: <strong id="timingText">9:30 AM – 4:20 PM</strong></div>
-      <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;">
-        <a id="ytLinkAbout" href="#" class="btn-primary" target="_blank">Watch on YouTube</a>
-      </div>
+      <h2 class="section-title" id="trustName"></h2>
+      <p class="section-desc" id="aboutDesc"></p>
+      <div style="margin-top:24px; font-weight:600; color:var(--sky-deep);" id="trustRecognition"></div>
+      <div style="margin-top:28px;"><a id="ytLinkAbout" href="#" class="btn-primary" target="_blank">Watch on YouTube</a></div>
     </div>
   </div>
 </section>
 
-<section class="subjects-section">
-  <div class="subjects-header reveal">
-    <div class="section-label">Curriculum</div>
-    <h2 class="section-title">What We Teach</h2>
-    <p class="section-desc" style="max-width:520px;margin:14px auto 0;">A well-rounded curriculum designed to build academic excellence, physical fitness, and creative expression.</p>
+<section class="subjects-section reveal">
+  <div style="text-align:center;margin-bottom:40px;">
+    <div class="section-label">Curriculum</div><h2 class="section-title">What We Teach</h2>
   </div>
   <div class="subjects-grid">
-    <div class="subject-card reveal">
-      <div class="subject-card-icon">📖</div>
-      <h3>Core Academic Subjects</h3>
-      <ul class="subject-list" id="subjectsList"></ul>
-    </div>
-    <div class="subject-card reveal">
-      <div class="subject-card-icon">🎨</div>
-      <h3>Common Education for All</h3>
-      <ul class="subject-list" id="activitiesList"></ul>
-    </div>
-    <div class="subject-card reveal">
-      <div class="subject-card-icon">⭐</div>
-      <h3>Special Features</h3>
-      <ul class="subject-list" id="featuresList"></ul>
-    </div>
+    <div class="subject-card"><div class="subject-card-icon">📖</div><h3>Core Academic Subjects</h3><ul class="subject-list" id="subjectsList"></ul></div>
+    <div class="subject-card"><div class="subject-card-icon">🎨</div><h3>Activities</h3><ul class="subject-list" id="activitiesList"></ul></div>
+    <div class="subject-card"><div class="subject-card-icon">⭐</div><h3>Special Features</h3><ul class="subject-list" id="featuresList"></ul></div>
   </div>
 </section>
 
-<section class="features-section">
-  <div class="features-header reveal">
-    <div class="section-label">Facilities</div>
-    <h2 class="section-title">Everything a Child Needs</h2>
-    <p class="section-desc" style="max-width:480px;margin:14px auto 0;">From classrooms to playgrounds, we provide a holistic environment for every kind of learner.</p>
+<section class="reveal">
+  <div style="text-align:center;margin-bottom:40px;">
+    <div class="section-label">Facilities</div><h2 class="section-title">Everything a Child Needs</h2>
   </div>
   <div class="features-grid" id="facilitiesGrid"></div>
 </section>
-
-<div class="trust-strip">
-  <h2>Admissions Open for <span id="stripYear">2026–2027</span></h2>
-  <p>Give your child the gift of a world-class education. Contact us today.</p>
-  <div class="strip-stats">
-    <div class="strip-stat"><div class="num" id="stripFounded">2018</div><div class="lbl">Year Founded</div></div>
-    <div class="strip-stat"><div class="num">PreKG–Class 10</div><div class="lbl">Grades Offered</div></div>
-    <div class="strip-stat"><div class="num">100%</div><div class="lbl">Govt. Recognized</div></div>
-    <div class="strip-stat"><div class="num" id="stripActivities">8+</div><div class="lbl">Activities & Clubs</div></div>
-  </div>
-  <div style="margin-top:36px;">
-    <a href="contact.html" style="background:white;color:var(--sky-deep);border-radius:50px;padding:14px 36px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,0.15);display:inline-block;">Contact Us →</a>
-  </div>
-</div>
 
 <footer>
   <p id="footerText">© 2025 <strong>Sarvothomukha International Public School</strong>. All rights reserved. Powered by <strong>ABTS Technologies</strong>.</p>
@@ -137,66 +102,36 @@
         <path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/>
       </svg>
     </a>
+
+  </div>
+    
 </footer>
 
 <script type="module">
-  import { SIPS } from './sips-data.js';
-  // then use: const data = await SIPS.get('hero');
-</script>
-<script>
-const FACILITY_ICONS=['📚','🥋','💻','🎵','🧘','⚽','🚌','🏛️','🎨','🔬'];
-document.addEventListener('DOMContentLoaded',()=>{
-  applySettings(); applyAbout(); applyAdmission(); initReveal();
-});
-function applySettings(){
-  const s=SIPS.get('settings');
-  document.getElementById('footerText').innerHTML=s.footer.replace('Sarvothomukha International Public School','<strong>Sarvothomukha International Public School</strong>').replace('ABTS Technologies','<strong>ABTS Technologies</strong>');
-  if(s.primaryColor) document.documentElement.style.setProperty('--sky',s.primaryColor);
-}
-function applyAbout(){
-  const a=SIPS.get('about');
-  document.getElementById('schoolImg').src=a.imageUrl;
-  document.getElementById('trustName').textContent=a.trust;
-  document.getElementById('trustRecognition').textContent=a.recognition;
-  document.getElementById('aboutDesc').textContent=a.description;
-  document.getElementById('timingText').textContent=a.timeStart+' – '+a.timeEnd;
-  document.getElementById('ytLinkAbout').href=a.youtubeUrl;
-  if(a.youtube) document.getElementById('footerYT').href=a.youtubeUrl;
-  document.getElementById('metaItems').innerHTML=[
-    'Founded in '+a.founded,
-    a.recognition,
-    'State Syllabus'
-  ].map(m=>`<div class="meta-item"><div class="meta-dot"></div><span>${m}</span></div>`).join('');
-  document.getElementById('stripFounded').textContent=a.founded;
-  const allActs=[...(a.activities||[]),...(a.features||[])];
-  document.getElementById('stripActivities').textContent=allActs.length+'+';
-  document.getElementById('subjectsList').innerHTML=(a.subjects||[]).map(s=>`<li>${s}</li>`).join('');
-  document.getElementById('activitiesList').innerHTML=(a.activities||[]).map(s=>`<li>${s}</li>`).join('');
-  document.getElementById('featuresList').innerHTML=(a.features||[]).map(s=>`<li>${s}</li>`).join('');
-  const allFacilities=[...(a.activities||[]),...(a.features||[])].slice(0,8);
-  document.getElementById('facilitiesGrid').innerHTML=allFacilities.map((f,i)=>`
-    <div class="feature-card reveal"><span class="f-icon">${FACILITY_ICONS[i]||'⭐'}</span><h4>${f}</h4></div>`).join('');
-}
-function applyAdmission(){
-  const a=SIPS.get('admission');
-  document.getElementById('stripYear').textContent=a.year;
-}
-function initReveal(){
-  const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('visible')),{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+  import { SIPS } from './js/sips-data.js';
+  const FACILITY_ICONS=['🎵','🥋','💻','📚','🧘','🏛️','🚌','⚽','🎨','🔬'];
 
-   const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
+  async function init() {
+    const ab = await SIPS.get('about');
+    document.getElementById('schoolImg').src = ab.imageUrl;
+    document.getElementById('trustName').textContent = ab.trust;
+    document.getElementById('aboutDesc').textContent = ab.description;
+    document.getElementById('trustRecognition').textContent = '✦ ' + ab.recognition;
+    document.getElementById('ytLinkAbout').href = ab.youtubeUrl;
 
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-  document.querySelectorAll('#navLinks a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('show');
-  });
-});
-}
+    document.getElementById('subjectsList').innerHTML = (ab.subjects||[]).map(s=>`<li>${s}</li>`).join('');
+    document.getElementById('activitiesList').innerHTML = (ab.activities||[]).map(s=>`<li>${s}</li>`).join('');
+    document.getElementById('featuresList').innerHTML = (ab.features||[]).map(s=>`<li>${s}</li>`).join('');
+
+    const allFacilities = [...(ab.activities||[]), ...(ab.features||[])].slice(0, 8);
+    document.getElementById('facilitiesGrid').innerHTML = allFacilities.map((f, i) => `<div class="feature-card"><span class="f-icon">${FACILITY_ICONS[i]||'⭐'}</span><h4>${f}</h4></div>`).join('');
+
+    const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }));
+    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+  }
+
+  document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('show'); });
+  init();
 </script>
 </body>
 </html>
