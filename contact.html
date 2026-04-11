@@ -3,105 +3,27 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Contact Us — Sarvothomukha International Public School</title>
-<link rel="stylesheet" href="./css/styles.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="./css/styles.css"/>
 <style>
-:root{--sky:#6bc8ff;--sky-light:#a8deff;--sky-deep:#3aadee;--sky-pale:#e8f7ff;--white:#fff;--dark:#0d2233;--mid:#2a4a63;--muted:#6b8fa8;--border:#d0eeff;}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;height:72px;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);box-shadow:0 2px 24px rgba(107,200,255,0.10);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
-.nav-logo-circle{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--sky-deep));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:white;box-shadow:0 4px 12px rgba(107,200,255,0.4);flex-shrink:0;}
-.nav-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--dark);line-height:1.2;max-width:200px;}
-.nav-name span{color:var(--sky-deep);}
-.nav-links{display:flex;gap:36px;list-style:none;}
-.nav-links a{font-size:14px;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:0.4px;position:relative;padding-bottom:4px;transition:color 0.2s;}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--sky-deep);border-radius:2px;transition:width 0.3s;}
-.nav-links a:hover,.nav-links a.active{color:var(--sky-deep);}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.page-hero{padding:140px 6vw 80px;background:linear-gradient(160deg,#f0faff,#e0f4ff 50%,#fff);position:relative;overflow:hidden;text-align:center;}
-.page-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(107,200,255,0.18),transparent 70%);}
-.page-hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(107,200,255,0.10),transparent 70%);}
-.breadcrumb{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:20px;animation:fadeUp 0.6s ease both;}
-.breadcrumb a{color:var(--sky-deep);text-decoration:none;font-weight:500;}
-.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,60px);font-weight:900;color:var(--dark);line-height:1.1;animation:fadeUp 0.6s 0.1s ease both;}
-.page-hero h1 em{font-style:normal;color:var(--sky-deep);}
-.page-hero p{font-size:17px;color:var(--muted);max-width:520px;margin:18px auto 0;line-height:1.7;animation:fadeUp 0.6s 0.2s ease both;}
-/* CARDS */
-.contact-cards{padding:80px 6vw 60px;background:white;}
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto;}
-.ccard{background:var(--sky-pale);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;transition:transform 0.25s,box-shadow 0.25s;position:relative;overflow:hidden;}
-.ccard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--sky),var(--sky-deep));}
-.ccard:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(107,200,255,0.18);}
-.ccard .icon{width:60px;height:60px;border-radius:16px;margin:0 auto 18px;background:linear-gradient(135deg,var(--sky),var(--sky-deep));display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 20px rgba(107,200,255,0.35);}
-.ccard h3{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sky-deep);margin-bottom:10px;}
-.ccard p{font-size:15px;color:var(--dark);font-weight:500;line-height:1.6;}
-.ccard a{color:var(--sky-deep);text-decoration:none;font-weight:600;}
-/* MAIN CONTACT */
-.contact-main{padding:0 6vw 100px;background:white;}
-.contact-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start;max-width:1100px;margin:0 auto;}
-.section-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sky-deep);margin-bottom:12px;}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(26px,3vw,40px);font-weight:700;color:var(--dark);line-height:1.2;}
-.section-desc{font-size:16px;color:var(--muted);line-height:1.8;margin-top:14px;}
-.info-items{margin-top:36px;display:flex;flex-direction:column;gap:20px;}
-.info-item{display:flex;align-items:flex-start;gap:16px;}
-.info-icon{width:48px;height:48px;border-radius:14px;flex-shrink:0;background:var(--sky-pale);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;}
-.info-item-title{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--sky-deep);margin-bottom:4px;}
-.info-item-val{font-size:15px;color:var(--dark);font-weight:500;line-height:1.5;}
-.info-item-val a{color:var(--sky-deep);text-decoration:none;}
-.timing-box{background:linear-gradient(135deg,var(--sky-pale),#d0efff);border:1px solid var(--border);border-radius:16px;padding:20px 24px;margin-top:32px;display:flex;align-items:center;gap:14px;}
-.timing-box .t-icon{font-size:28px;}
-.timing-box .t-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sky-deep);}
-.timing-box .t-val{font-size:16px;font-weight:600;color:var(--dark);margin-top:3px;}
-/* FORM */
-.contact-form-box{background:white;border:1px solid var(--border);border-radius:24px;padding:44px 40px;box-shadow:0 12px 48px rgba(107,200,255,0.12);}
-.form-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--dark);margin-bottom:6px;}
-.form-subtitle{font-size:14px;color:var(--muted);margin-bottom:28px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:18px;}
-.form-group label{font-size:12px;font-weight:600;color:var(--mid);letter-spacing:0.5px;text-transform:uppercase;}
-.form-group input,.form-group textarea,.form-group select{background:var(--sky-pale);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--dark);outline:none;transition:all 0.2s;resize:none;-webkit-appearance:none;}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--sky-deep);box-shadow:0 0 0 3px rgba(107,200,255,0.12);background:white;}
-.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted);}
-.form-submit{width:100%;padding:15px;background:linear-gradient(135deg,var(--sky-deep),var(--sky));border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:white;cursor:pointer;box-shadow:0 8px 24px rgba(107,200,255,0.35);transition:opacity 0.2s,transform 0.2s;}
-.form-submit:hover{opacity:0.92;transform:translateY(-1px);}
-.form-success{display:none;text-align:center;padding:32px 20px;}
-.form-success .s-icon{font-size:52px;margin-bottom:16px;}
-.form-success h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--dark);margin-bottom:8px;}
-.form-success p{font-size:14px;color:var(--muted);}
-/* ADMISSION BANNER */
-.admission-banner{background:linear-gradient(135deg,var(--sky-deep),#2196e8);padding:56px 6vw;text-align:center;}
-.admission-banner h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,36px);font-weight:700;color:white;margin-bottom:10px;}
-.admission-banner p{font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:28px;}
-.adm-phones{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
-.adm-phone{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:50px;padding:12px 24px;font-size:16px;font-weight:700;color:white;backdrop-filter:blur(4px);}
-footer{background:var(--dark);padding:28px 6vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(107,200,255,0.1);}
-footer p{font-size:13px;color:var(--muted);}footer p strong{color:var(--sky);}
-.social-links{display:flex;gap:12px;}
-.social-btn{width:36px;height:36px;border-radius:8px;background:rgba(107,200,255,0.1);border:1px solid rgba(107,200,255,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;text-decoration:none;transition:background 0.2s;}
-.social-btn:hover{background:rgba(107,200,255,0.2);}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}.reveal.visible{opacity:1;transform:translateY(0);}
-@media(max-width:900px){.contact-inner{grid-template-columns:1fr;gap:48px;}.cards-grid{grid-template-columns:1fr;max-width:420px;}}
-@media(max-width:640px){.nav-links{display:none;}.form-row{grid-template-columns:1fr;}.contact-form-box{padding:28px 20px;}.cards-grid{grid-template-columns:1fr 1fr;max-width:100%;}}
+  .contact-cards{padding:80px 6vw 60px;background:white;}
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:24px;max-width:1000px;margin:0 auto;}
+  .ccard{background:var(--sky-pale);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;}
+  .ccard .icon{font-size:32px;margin-bottom:12px;} .ccard h3{color:var(--sky-deep);margin-bottom:8px;}
 </style>
 </head>
 <body>
 <nav>
   <a href="index.html" class="nav-brand">
-    <div class="nav-logo-circle">
-      <img src="./images/sarvothomukhalogo.png" alt="logo">
-    </div>
+    <div class="nav-logo-circle"><img src="./images/sarvothomukhalogo.png" alt="logo"></div>
     <div class="nav-name">Sarvothomukha<br><span>International Public School</span></div>
   </a>
-
   <button class="menu-toggle" id="menuToggle">☰</button>
-
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
   </ul>
 </nav>
 
@@ -114,71 +36,21 @@ footer p{font-size:13px;color:var(--muted);}footer p strong{color:var(--sky);}
 <section class="contact-cards">
   <div class="cards-grid">
     <div class="ccard reveal">
-      <div class="icon">📞</div><h3>Phone</h3>
-      <p><a id="cardPhone1" href="tel:8088854101">8088854101</a><br/><a id="cardPhone2" href="tel:7899454101">7899454101</a></p>
+      <div class="icon">📞</div>
+      <h3>Phone</h3>
+      <p>
+        <a id="cardPhone1" href="#" style="color:var(--dark); text-decoration:none;"></a><br>
+        <a id="cardPhone2" href="#" style="color:var(--dark); text-decoration:none;"></a>
+      </p>
     </div>
-    <div class="ccard reveal">
-      <div class="icon">📍</div><h3>Location</h3>
-      <p id="cardAddress">Karnataka, India<br/>Govt. Recognized School</p>
-    </div>
-    <div class="ccard reveal">
-      <div class="icon">🕘</div><h3>School Hours</h3>
-      <p id="cardHours">9:30 AM – 4:20 PM<br/>Monday to Saturday</p>
-    </div>
+    
+    <div class="ccard reveal"><div class="icon">📍</div><h3>Location</h3><p id="cardAddress"></p></div>
+    <div class="ccard reveal"><div class="icon">🕘</div><h3>School Hours</h3><p id="cardHours"></p></div>
   </div>
 </section>
 
-<section class="contact-main">
-  <div class="contact-inner">
-    <div class="reveal">
-      <div class="section-label">Contact Details</div>
-      <h2 class="section-title">We're Always<br/>Here for You</h2>
-      <p class="section-desc">Whether you're a parent, student, or community member — our team is happy to assist with any inquiry.</p>
-      <div class="info-items">
-        <div class="info-item"><div class="info-icon">📞</div><div><div class="info-item-title">Call Us</div><div class="info-item-val"><a id="infoPhone1" href="tel:8088854101">8088854101</a> &nbsp;|&nbsp; <a id="infoPhone2" href="tel:7899454101">7899454101</a></div></div></div>
-        <div class="info-item"><div class="info-icon">📍</div><div><div class="info-item-title">Location</div><div class="info-item-val" id="infoAddress">Karnataka, India</div></div></div>
-        <div class="info-item"><div class="info-icon">▶</div><div><div class="info-item-title">YouTube</div><div class="info-item-val"><a id="infoYT" href="#" target="_blank">Watch Our Channel →</a></div></div></div>
-        <div class="info-item"><div class="info-icon">🎓</div><div><div class="info-item-title">Admissions</div><div class="info-item-val" id="infoAdm">Open for Academic Year 2026–2027</div></div></div>
-      </div>
-      <div class="timing-box">
-        <div class="t-icon">🕘</div>
-        <div><div class="t-label">School Timings</div><div class="t-val" id="infoTiming">9:30 AM – 4:20 PM, Mon – Sat</div></div>
-      </div>
-    </div>
-
-    <div class="contact-form-box reveal">
-      <div id="formContent">
-        <div class="form-title">Send Us a Message</div>
-        <div class="form-subtitle">Fill out the form and we'll get back to you shortly.</div>
-        <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" id="fFirst" placeholder="Your first name"/></div>
-          <div class="form-group"><label>Last Name</label><input type="text" id="fLast" placeholder="Your last name"/></div>
-        </div>
-        <div class="form-group"><label>Phone Number</label><input type="tel" id="fPhone" placeholder="+91 00000 00000"/></div>
-        <div class="form-group"><label>Email Address</label><input type="email" id="fEmail" placeholder="you@example.com"/></div>
-        <div class="form-group"><label>Inquiry Type</label>
-          <select id="fType"><option>Admission Enquiry</option><option>Fee Structure</option><option>Transport / Vehicle Facility</option><option>Academic Programs</option><option>Other</option></select>
-        </div>
-        <div class="form-group"><label>Message</label><textarea id="fMsg" rows="4" placeholder="Tell us how we can help you…"></textarea></div>
-        <button class="form-submit" onclick="submitForm()">Send Message →</button>
-      </div>
-      <div class="form-success" id="formSuccess">
-        <div class="s-icon">✅</div>
-        <h3>Message Sent!</h3>
-        <p>Thank you for reaching out. Our team will contact you within 1–2 business days.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="admission-banner">
-  <h2>🎓 Admissions Open for <span id="bannerYear">2026–2027</span></h2>
-  <p>Seats are limited — contact us today to secure your child's future at Sarvothomukha.</p>
-  <div class="adm-phones">
-    <div class="adm-phone">📞 <span id="bannerPhone1">8088854101</span></div>
-    <div class="adm-phone">📞 <span id="bannerPhone2">7899454101</span></div>
-  </div>
-</div>
+<footer>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5382959366943!2d77.50285967494513!3d13.00135581422546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3c50bc996a1b%3A0x271bf1be49043bcf!2sSarvothomukha%20International%20Public%20School!5e0!3m2!1sen!2sin!4v1694614439630!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 <footer>
   <p id="footerText">© 2025 <strong>Sarvothomukha International Public School</strong>. All rights reserved. Powered by <strong>ABTS Technologies</strong>.</p>
@@ -213,77 +85,26 @@ footer p{font-size:13px;color:var(--muted);}footer p strong{color:var(--sky);}
         <path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/>
       </svg>
     </a>
+
+  </div>
 </footer>
 
 <script type="module">
-  import { SIPS } from './sips-data.js';
-  // then use: const data = await SIPS.get('hero');
-</script>
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-  applySettings(); applyContact(); applyAdmission(); initReveal();
-});
-function applySettings(){
-  const s=SIPS.get('settings');
-  document.getElementById('footerText').innerHTML=s.footer.replace('Sarvothomukha International Public School','<strong>Sarvothomukha International Public School</strong>').replace('ABTS Technologies','<strong>ABTS Technologies</strong>');
-  if(s.primaryColor) document.documentElement.style.setProperty('--sky',s.primaryColor);
-}
-function applyContact(){
-  const c=SIPS.get('contact');
-  // cards
-  document.getElementById('cardPhone1').textContent=c.phone1;
-  document.getElementById('cardPhone1').href='tel:'+c.phone1;
-  document.getElementById('cardPhone2').textContent=c.phone2;
-  document.getElementById('cardPhone2').href='tel:'+c.phone2;
-  document.getElementById('cardAddress').innerHTML=c.address+'<br/>Govt. Recognized School';
-  document.getElementById('cardHours').innerHTML=c.timeStart+' – '+c.timeEnd+'<br/>'+c.workDays;
-  // info
-  document.getElementById('infoPhone1').textContent=c.phone1;
-  document.getElementById('infoPhone1').href='tel:'+c.phone1;
-  document.getElementById('infoPhone2').textContent=c.phone2;
-  document.getElementById('infoPhone2').href='tel:'+c.phone2;
-  document.getElementById('infoAddress').textContent=c.address;
-  document.getElementById('infoTiming').textContent=c.timeStart+' – '+c.timeEnd+', '+c.workDays;
-  if(c.youtube){document.getElementById('infoYT').href=c.youtube;document.getElementById('footerYT').href=c.youtube;}
-  // banner phones
-  document.getElementById('bannerPhone1').textContent=c.phone1;
-  document.getElementById('bannerPhone2').textContent=c.phone2;
-}
-function applyAdmission(){
-  const a=SIPS.get('admission');
-  document.getElementById('bannerYear').textContent=a.year;
-  document.getElementById('infoAdm').textContent='Open for Academic Year '+a.year;
-}
-function submitForm(){
-  const first=document.getElementById('fFirst').value.trim();
-  const phone=document.getElementById('fPhone').value.trim();
-  if(!first||!phone){alert('Please enter your name and phone number.');return;}
-  const enqs=SIPS.get('enquiries');
-  const now=new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'});
-  enqs.unshift({
-    name:first+' '+document.getElementById('fLast').value.trim(),
-    phone, email:document.getElementById('fEmail').value.trim(),
-    type:document.getElementById('fType').value,
-    msg:document.getElementById('fMsg').value.trim(),
-    date:now, status:'pending'
-  });
-  SIPS.set('enquiries',enqs);
-  document.getElementById('formContent').style.display='none';
-  document.getElementById('formSuccess').style.display='block';
-}
+  import { SIPS } from './js/sips-data.js';
 
- const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
+  async function init() {
+    const c = await SIPS.get('contact');
+    document.getElementById('cardPhone1').textContent = c.phone1;
+    document.getElementById('cardPhone2').textContent = c.phone2;
+    document.getElementById('cardAddress').textContent = c.address;
+    document.getElementById('cardHours').innerHTML = c.timeStart + ' – ' + c.timeEnd + '<br>' + c.workDays;
 
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-  document.querySelectorAll('#navLinks a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('show');
-  });
-});
-function initReveal(){const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('visible')),{threshold:0.1});document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));}
+    const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }));
+    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+  }
+
+  document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('show'); });
+  init();
 </script>
 </body>
 </html>
