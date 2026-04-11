@@ -173,9 +173,11 @@
 
   async function init() {
     try {
-      const [s, h, adm, ab, t, c, gal] = await Promise.all([
+      // 1. Added 'announcements' to the fetch list
+      const [s, h, adm, ab, t, c, gal, anns] = await Promise.all([
         SIPS.get('settings'), SIPS.get('hero'), SIPS.get('admission'), 
-        SIPS.get('about'), SIPS.get('teachers'), SIPS.get('contact'), SIPS.get('gallery')
+        SIPS.get('about'), SIPS.get('teachers'), SIPS.get('contact'), 
+        SIPS.get('gallery'), SIPS.get('announcements')
       ]);
 
       document.title = s.siteTitle; setHtml('footerText', s.footer);
@@ -221,10 +223,22 @@
       if(c.facebook && footerFB) footerFB.href = c.facebook;
       if(c.instagram && footerIG) footerIG.href = c.instagram;
 
+      // Gallery Logic
       const galleryGrid = document.getElementById('galleryGrid');
       if (galleryGrid) {
         const g = gal.slice(0, 7);
         galleryGrid.innerHTML = g.length ? g.map((x, i) => `<div class="gallery-item" style="${i===0?'grid-column:span 2;grid-row:span 2;':''}"><img src="${x.src}" alt="${x.alt}" loading="lazy" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span class="gallery-tag">${x.cat||'School'}</span></div></div>`).join('') : '<p style="grid-column:1/-1;text-align:center;">No photos available.</p>';
+      }
+
+      // 2. Added Announcements Logic
+      const strip = document.getElementById('annStrip');
+      if (strip) {
+        if(anns && anns.length) { 
+          strip.style.display = ''; 
+          setHtml('annList', anns.slice(0,3).map(a=>`<div class="ann-item"><div class="ann-icon-box">${a.icon||'📢'}</div><div><div class="ann-body-title">${a.title}</div><div class="ann-body-text">${a.text}</div><div class="ann-date">📅 ${a.date}</div></div></div>`).join('')); 
+        } else { 
+          strip.style.display = 'none'; 
+        }
       }
 
       initReveal();
@@ -270,7 +284,7 @@
         document.getElementById('formContent').style.display = 'none'; 
         document.getElementById('formSuccess').style.display = 'block'; 
       } else {
-        alert("Failed to send message. Please try again.");
+        alert("Failed to send message. Please ensure Firebase Rules are set correctly.");
         submitBtn.textContent = "Send Message →";
         submitBtn.disabled = false;
         submitBtn.style.opacity = "1";
