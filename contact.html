@@ -6,13 +6,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="./css/styles.css"/>
 <style>
-  .contact-cards{padding:80px 6vw 60px;background:white;}
-  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:24px;max-width:1000px;margin:0 auto;}
-  .ccard{background:var(--sky-pale);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;}
-  .ccard .icon{font-size:32px;margin-bottom:12px;} .ccard h3{color:var(--sky-deep);margin-bottom:8px;}
+.social-links{display:flex;gap:12px;align-items:center;}
+.social-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:white;text-decoration:none;transition:transform 0.2s,opacity 0.2s;}
+.social-btn:hover{transform:translateY(-3px);opacity:0.85;}
+.social-btn.youtube{background:#FF0000;}
+.social-btn.facebook{background:#1877F2;}
+.social-btn.whatsapp{background:#25D366;}
+.social-btn.instagram{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%);}
+.contact-cards{padding:80px 6vw 60px;background:white;}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;max-width:1000px;margin:0 auto;}
+.ccard{background:var(--sky-pale);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;}
+.ccard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--sky),var(--sky-deep));}
+.ccard:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(107,200,255,0.15);}
+.ccard .icon{font-size:36px;margin-bottom:14px;display:block;}
+.ccard h3{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--sky-deep);margin-bottom:10px;letter-spacing:0.5px;}
+.ccard p{font-size:15px;color:var(--dark);font-weight:500;line-height:1.6;}
+.ccard a{color:var(--sky-deep);text-decoration:none;font-weight:600;}
+.ccard a:hover{text-decoration:underline;}
+/* Contact form section */
+.contact-form-section{padding:0 6vw 80px;background:white;}
+.contact-form-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start;max-width:1100px;margin:0 auto;}
+.contact-form-box{background:white;border:1px solid var(--border);border-radius:24px;padding:44px 40px;box-shadow:0 12px 48px rgba(107,200,255,0.12);}
+.form-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.form-subtitle{font-size:14px;color:var(--muted);margin-bottom:28px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:18px;}
+.form-group label{font-size:12px;font-weight:600;color:var(--mid);letter-spacing:0.5px;text-transform:uppercase;}
+.form-group input,.form-group textarea,.form-group select{background:var(--sky-pale);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--dark);outline:none;transition:all 0.2s;resize:none;-webkit-appearance:none;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--sky-deep);box-shadow:0 0 0 3px rgba(107,200,255,0.12);background:white;}
+.form-submit{width:100%;padding:15px;background:linear-gradient(135deg,var(--sky-deep),var(--sky));border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:white;cursor:pointer;box-shadow:0 8px 24px rgba(107,200,255,0.35);transition:opacity 0.2s,transform 0.2s;}
+.form-submit:hover{opacity:0.92;transform:translateY(-1px);}
+.form-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.info-items{display:flex;flex-direction:column;gap:20px;}
+.info-item{display:flex;align-items:flex-start;gap:16px;}
+.info-icon{width:48px;height:48px;border-radius:14px;flex-shrink:0;background:var(--sky-pale);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;}
+.info-item-title{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--sky-deep);margin-bottom:4px;}
+.info-item-val{font-size:15px;color:var(--dark);font-weight:500;line-height:1.5;}
+.info-item-val a{color:var(--sky-deep);text-decoration:none;}
+@media(max-width:900px){.contact-form-inner{grid-template-columns:1fr;gap:40px;}}
+@media(max-width:640px){.form-row{grid-template-columns:1fr;}.contact-form-box{padding:28px 20px;}}
 </style>
 </head>
 <body>
+
 <nav>
   <a href="index.html" class="nav-brand">
     <div class="nav-logo-circle"><img src="./images/sarvothomukhalogo.png" alt="logo"></div>
@@ -33,78 +69,198 @@
   <p>We'd love to hear from you. Reach out about admissions, programs, or anything else — we're here to help.</p>
 </div>
 
+<!-- CONTACT CARDS -->
 <section class="contact-cards">
   <div class="cards-grid">
     <div class="ccard reveal">
-      <div class="icon">📞</div>
+      <span class="icon">📞</span>
       <h3>Phone</h3>
       <p>
-        <a id="cardPhone1" href="#" style="color:var(--dark); text-decoration:none;"></a><br>
-        <a id="cardPhone2" href="#" style="color:var(--dark); text-decoration:none;"></a>
+        <a id="cardPhone1" href="#">8088854101</a><br>
+        <a id="cardPhone2" href="#">7899454101</a>
       </p>
     </div>
-    
-    <div class="ccard reveal"><div class="icon">📍</div><h3>Location</h3><p id="cardAddress"></p></div>
-    <div class="ccard reveal"><div class="icon">🕘</div><h3>School Hours</h3><p id="cardHours"></p></div>
+    <div class="ccard reveal">
+      <span class="icon">📍</span>
+      <h3>Location</h3>
+      <p id="cardAddress">#9 1st cross, GajananaNagar, Hegganahalli cross, Bengaluru-560091</p>
+    </div>
+    <div class="ccard reveal">
+      <span class="icon">🕘</span>
+      <h3>School Hours</h3>
+      <p id="cardHours">9:30 AM – 4:00 PM<br>Monday to Saturday</p>
+    </div>
   </div>
 </section>
 
-<footer>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5382959366943!2d77.50285967494513!3d13.00135581422546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3c50bc996a1b%3A0x271bf1be49043bcf!2sSarvothomukha%20International%20Public%20School!5e0!3m2!1sen!2sin!4v1694614439630!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<!-- CONTACT FORM -->
+<section class="contact-form-section">
+  <div class="contact-form-inner">
+    <div>
+      <div class="section-label">Direct Contact</div>
+      <h2 class="section-title" style="margin-bottom:32px;">Reach Out To Us</h2>
+      <div class="info-items">
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-item-title">Call Us</div>
+            <div class="info-item-val">
+              <a id="infoPhone1" href="tel:8088854101">8088854101</a><br>
+              <a id="infoPhone2" href="tel:7899454101">7899454101</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">💬</div>
+          <div>
+            <div class="info-item-title">WhatsApp</div>
+            <div class="info-item-val"><a id="infoWA" href="https://wa.me/918088854101" target="_blank">Chat on WhatsApp</a></div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-item-title">Address</div>
+            <div class="info-item-val" id="infoAddr">#9 1st cross, GajananaNagar, Hegganahalli cross, Bengaluru-560091</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕘</div>
+          <div>
+            <div class="info-item-title">School Hours</div>
+            <div class="info-item-val" id="infoHours">9:30 AM – 4:00 PM · Mon–Sat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-box reveal">
+      <div class="form-title">Send us a Message</div>
+      <div class="form-subtitle">We'll get back to you within 1–2 business days.</div>
+      <div id="contactFormContent">
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" id="fName" placeholder="Your name"/></div>
+          <div class="form-group"><label>Phone</label><input type="tel" id="fPhone" placeholder="+91 00000 00000"/></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" id="fEmail" placeholder="you@example.com"/></div>
+        <div class="form-group">
+          <label>Inquiry Type</label>
+          <select id="fType">
+            <option>Admission Enquiry</option>
+            <option>Fee Structure</option>
+            <option>Transport / Vehicle Facility</option>
+            <option>Academic Programs</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea id="fMsg" rows="4" placeholder="Tell us how we can help…"></textarea></div>
+        <button id="submitBtn" class="form-submit">Send Message →</button>
+      </div>
+      <div id="formSuccess" style="display:none;text-align:center;padding:32px 0;">
+        <div style="font-size:52px;margin-bottom:16px;">✅</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:8px;">Message Sent!</div>
+        <div style="font-size:14px;color:var(--muted);">Our team will contact you within 1–2 business days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5382959366943!2d77.50285967494513!3d13.00135581422546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3c50bc996a1b%3A0x271bf1be49043bcf!2sSarvothomukha%20International%20Public%20School!5e0!3m2!1sen!2sin!4v1694614439630!5m2!1sen!2sin"
+  width="100%" height="450" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 <footer>
   <p id="footerText">© 2025 <strong>Sarvothomukha International Public School</strong>. All rights reserved. Powered by <strong>ABTS Technologies</strong>.</p>
-
   <h4 style="color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Follow Us</h4>
   <div class="social-links">
-
-    <!-- YouTube -->
     <a href="https://www.youtube.com/@SarvothomukhaInternationalpubl/videos" target="_blank" class="social-btn youtube" id="footerYT">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
     </a>
-
-    <!-- Facebook -->
     <a href="https://www.facebook.com/profile.php?id=61572317934375" target="_blank" class="social-btn facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5v-2.2c0-2.5 1.5-3.9 3.8-3.9l2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5v-2.2c0-2.5 1.5-3.9 3.8-3.9l2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
     </a>
-
-    <!-- WhatsApp -->
     <a href="https://wa.me/918088854101" target="_blank" class="social-btn whatsapp">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-        <path d="M20.5 3.5A12 12 0 0 0 2 17.9L0 24l6.3-1.6A12 12 0 1 0 20.5 3.5zm-8.5 18a10 10 0 0 1-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A10 10 0 1 1 12 21.5zm5.5-7.5c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-1.3 1-1.5 1.1-.3.1-.6 0a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4A3.5 3.5 0 0 0 6 9.6a6.1 6.1 0 0 0 1.3 3.2 14 14 0 0 0 5.3 4.7c.7.3 1.3.5 1.7.6a4.1 4.1 0 0 0 1.9.1 3.2 3.2 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.1-.3-.2-.6-.4z"/>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20.5 3.5A12 12 0 0 0 2 17.9L0 24l6.3-1.6A12 12 0 1 0 20.5 3.5zm-8.5 18a10 10 0 0 1-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A10 10 0 1 1 12 21.5zm5.5-7.5c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-1.3 1-1.5 1.1-.3.1-.6 0a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4A3.5 3.5 0 0 0 6 9.6a6.1 6.1 0 0 0 1.3 3.2 14 14 0 0 0 5.3 4.7c.7.3 1.3.5 1.7.6a4.1 4.1 0 0 0 1.9.1 3.2 3.2 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.1-.3-.2-.6-.4z"/></svg>
     </a>
-
-    <!-- Instagram -->
     <a href="https://www.instagram.com/sarvothomukha2018/" target="_blank" class="social-btn instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-        <path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
     </a>
-
   </div>
 </footer>
 
 <script type="module">
-  import { SIPS } from './js/sips-data.js';
+import { SIPS } from './js/sips-data.js';
 
-  async function init() {
-    const c = await SIPS.get('contact');
-    document.getElementById('cardPhone1').textContent = c.phone1;
-    document.getElementById('cardPhone2').textContent = c.phone2;
-    document.getElementById('cardAddress').textContent = c.address;
-    document.getElementById('cardHours').innerHTML = c.timeStart + ' – ' + c.timeEnd + '<br>' + c.workDays;
+async function init() {
+  const c = await SIPS.get('contact');
 
-    const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }));
-    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+  // Cards
+  const p1 = document.getElementById('cardPhone1');
+  const p2 = document.getElementById('cardPhone2');
+  p1.textContent = c.phone1; p1.href = 'tel:' + c.phone1;
+  p2.textContent = c.phone2; p2.href = 'tel:' + c.phone2;
+  document.getElementById('cardAddress').textContent = c.address;
+  document.getElementById('cardHours').innerHTML = c.timeStart + ' – ' + c.timeEnd + '<br>' + c.workDays;
+
+  // Info column
+  const i1 = document.getElementById('infoPhone1');
+  const i2 = document.getElementById('infoPhone2');
+  i1.textContent = c.phone1; i1.href = 'tel:' + c.phone1;
+  i2.textContent = c.phone2; i2.href = 'tel:' + c.phone2;
+  if (c.whatsapp) document.getElementById('infoWA').href = 'https://wa.me/91' + c.whatsapp.replace(/\D/g,'');
+  document.getElementById('infoAddr').textContent  = c.address;
+  document.getElementById('infoHours').textContent = c.timeStart + ' – ' + c.timeEnd + ' · ' + c.workDays;
+
+  // Footer social
+  if (c.youtube)   document.getElementById('footerYT').href = c.youtube;
+
+  const obs = new IntersectionObserver(
+    e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+}
+
+// Mobile nav
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('show');
+});
+document.querySelectorAll('#navLinks a').forEach(a =>
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('show'))
+);
+
+// Form submit
+document.getElementById('submitBtn').addEventListener('click', async function() {
+  const name  = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+
+  this.textContent = 'Sending…';
+  this.disabled = true;
+
+  const enqs = await SIPS.get('enquiries') || [];
+  enqs.unshift({
+    name, phone,
+    email:  document.getElementById('fEmail').value.trim(),
+    type:   document.getElementById('fType').value,
+    msg:    document.getElementById('fMsg').value.trim(),
+    date:   new Date().toLocaleDateString('en-IN', {year:'numeric',month:'long',day:'numeric'}),
+    status: 'pending'
+  });
+
+  SIPS.clearCache('enquiries');
+
+  if (await SIPS.set('enquiries', enqs)) {
+    document.getElementById('contactFormContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  } else {
+    alert('Failed to send. Please try again.');
+    this.textContent = 'Send Message →';
+    this.disabled = false;
   }
+});
 
-  document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('show'); });
-  init();
+init();
 </script>
 </body>
 </html>
