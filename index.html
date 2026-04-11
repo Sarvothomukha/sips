@@ -113,7 +113,7 @@
           </select>
         </div>
         <div class="form-group"><label>Message</label><textarea id="fMsg" rows="4" placeholder="Tell us how we can help…"></textarea></div>
-        <button class="form-submit" onclick="submitEnquiry()">Send Message →</button>
+       <button id="submitBtn" class="form-submit">Send Message →</button>
       </div>
       <div id="formSuccess" style="display:none;text-align:center;padding:32px 0;">
         <div style="font-size:52px;margin-bottom:16px;">✅</div>
@@ -192,20 +192,40 @@
       if(banner) banner.style.display = adm.show ? 'flex' : 'none';
       setTxt('admYear', adm.year); setTxt('admPhone1', adm.phone1); setTxt('admPhone2', adm.phone2); setTxt('admBtn', adm.btnText);
 
-      document.getElementById('aboutImg').src = ab.imageUrl;
+      const aboutImg = document.getElementById('aboutImg');
+      if (aboutImg) aboutImg.src = ab.imageUrl;
+      
       setTxt('aboutEst', 'Est. ' + ab.founded); setTxt('aboutFounded', ab.founded); setTxt('aboutDesc', ab.description);
-      document.getElementById('aboutFeatures').innerHTML = ab.features.slice(0, 4).map((f, i) => `<div class="feature-chip"><div class="icon">${ACT_ICONS[i] || '⭐'}</div>${f}</div>`).join('');
-      document.getElementById('ytLink').href = ab.youtubeUrl;
+      
+      const featuresBox = document.getElementById('aboutFeatures');
+      if (featuresBox) {
+        featuresBox.innerHTML = ab.features.slice(0, 4).map((f, i) => `<div class="feature-chip"><div class="icon">${ACT_ICONS[i] || '⭐'}</div>${f}</div>`).join('');
+      }
+      
+      const ytLink = document.getElementById('ytLink');
+      if (ytLink) ytLink.href = ab.youtubeUrl;
 
-      setHtml('teachersGrid', t.map(x => `<div class="teacher-card reveal"><div class="teacher-avatar">${x.name[0]}</div><div class="teacher-role">${x.role}</div><div class="teacher-name">${x.name}</div><div class="teacher-qual">${x.qual}</div></div>`).join(''));
+      const grid = document.getElementById('teachersGrid');
+      if (grid) {
+        grid.innerHTML = t.map(x => `<div class="teacher-card reveal"><div class="teacher-avatar">${x.name[0]}</div><div class="teacher-role">${x.role}</div><div class="teacher-name">${x.name}</div><div class="teacher-qual">${x.qual}</div></div>`).join('');
+      }
 
       setTxt('cPhone1', c.phone1); setTxt('cPhone2', c.phone2); setTxt('cAddress', c.address); setTxt('cTime', c.timeStart + ' – ' + c.timeEnd);
-      if(c.youtube) document.getElementById('footerYT').href = c.youtube;
-      if(c.facebook) document.getElementById('footerFB').href = c.facebook;
-      if(c.instagram) document.getElementById('footerIG').href = c.instagram;
+      
+      // Safely set social links if the IDs exist in HTML
+      const footerYT = document.getElementById('footerYT');
+      const footerFB = document.getElementById('footerFB');
+      const footerIG = document.getElementById('footerIG');
+      
+      if(c.youtube && footerYT) footerYT.href = c.youtube;
+      if(c.facebook && footerFB) footerFB.href = c.facebook;
+      if(c.instagram && footerIG) footerIG.href = c.instagram;
 
-      const g = gal.slice(0, 7);
-      document.getElementById('galleryGrid').innerHTML = g.length ? g.map((x, i) => `<div class="gallery-item" style="${i===0?'grid-column:span 2;grid-row:span 2;':''}"><img src="${x.src}" alt="${x.alt}" loading="lazy" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span class="gallery-tag">${x.cat||'School'}</span></div></div>`).join('') : '<p style="grid-column:1/-1;text-align:center;">No photos available.</p>';
+      const galleryGrid = document.getElementById('galleryGrid');
+      if (galleryGrid) {
+        const g = gal.slice(0, 7);
+        galleryGrid.innerHTML = g.length ? g.map((x, i) => `<div class="gallery-item" style="${i===0?'grid-column:span 2;grid-row:span 2;':''}"><img src="${x.src}" alt="${x.alt}" loading="lazy" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span class="gallery-tag">${x.cat||'School'}</span></div></div>`).join('') : '<p style="grid-column:1/-1;text-align:center;">No photos available.</p>';
+      }
 
       initReveal();
     } catch(e) { console.error(e); }
@@ -218,13 +238,46 @@
     document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
   }
 
-  window.submitEnquiry = async function() {
-    const name = document.getElementById('fName').value.trim(), phone = document.getElementById('fPhone').value.trim();
-    if(!name || !phone) { alert('Please enter your name and phone number.'); return; }
-    const enqs = await SIPS.get('enquiries') || [];
-    enqs.unshift({ name, phone, email: document.getElementById('fEmail').value, type: document.getElementById('fType').value, msg: document.getElementById('fMsg').value, date: new Date().toLocaleDateString('en-IN'), status: 'pending' });
-    if(await SIPS.set('enquiries', enqs)) { document.getElementById('formContent').style.display = 'none'; document.getElementById('formSuccess').style.display = 'block'; }
-  };
+  // Proper Module Event Listener for the Submit Button
+  const submitBtn = document.getElementById('submitBtn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', async function() {
+      const name = document.getElementById('fName').value.trim();
+      const phone = document.getElementById('fPhone').value.trim();
+      
+      if(!name || !phone) { 
+        alert('Please enter your name and phone number.'); 
+        return; 
+      }
+
+      // Visual feedback while sending
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.7";
+
+      const enqs = await SIPS.get('enquiries') || [];
+      enqs.unshift({ 
+        name, 
+        phone, 
+        email: document.getElementById('fEmail').value.trim(), 
+        type: document.getElementById('fType').value, 
+        msg: document.getElementById('fMsg').value.trim(), 
+        date: new Date().toLocaleDateString('en-IN'), 
+        status: 'pending' 
+      });
+
+      if(await SIPS.set('enquiries', enqs)) { 
+        document.getElementById('formContent').style.display = 'none'; 
+        document.getElementById('formSuccess').style.display = 'block'; 
+      } else {
+        alert("Failed to send message. Please try again.");
+        submitBtn.textContent = "Send Message →";
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "1";
+      }
+    });
+  }
+
   init();
 </script>
 </body>
