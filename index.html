@@ -1,54 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title id="metaTitle">Sarvothomukha International Public School</title>
 <meta name="description" id="metaDesc" content="Best school in Karnataka"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="./css/styles.css"/>
-<style>
-/* ── SOCIAL BUTTONS (final, no duplicates) ── */
-.social-links { display: flex; gap: 12px; align-items: center; }
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  color: white;
-  text-decoration: none;
-  transition: transform 0.2s, opacity 0.2s;
-}
-.social-btn:hover { transform: translateY(-3px); opacity: 0.85; }
-.social-btn.youtube   { background: #FF0000; }
-.social-btn.facebook  { background: #1877F2; }
-.social-btn.whatsapp  { background: #25D366; }
-.social-btn.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-</style>
 </head>
 <body>
 <nav>
   <a href="index.html" class="nav-brand">
-    <div class="nav-logo-circle">
-      <img src="./images/sarvothomukhalogo.png" alt="logo">
-    </div>
+    <div class="nav-logo-circle"><img src="./images/sarvothomukhalogo.png" alt="logo"></div>
     <div class="nav-name">Sarvothomukha<br><span>International Public School</span></div>
   </a>
-
   <button class="menu-toggle" id="menuToggle">☰</button>
-
   <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="gallery.html">Gallery</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<div class="hero-banner">
-  <img src="./images/sipsfront.png" alt="SIPS Banner">
-</div>
+<div class="hero-banner"><img src="./images/sipsfront.png" alt="SIPS Banner" style="width:100%;height:auto;display:block;"></div>
 
 <section class="hero" id="home">
   <div class="hero-badge" id="heroBadge">✦ Recognized by Govt. of Karnataka</div>
@@ -67,19 +42,17 @@
 
 <div class="admission-banner" id="admBanner">
   <div class="adm-title">🎓 Admissions Open for <span id="admYear">2026–2027</span></div>
-  <div class="adm-contact">Call us: <strong id="admPhone1">8088854101</strong> &nbsp;|&nbsp; <strong id="admPhone2">7899454101</strong></div>
-  <div class="adm-pill" id="admBtn">Apply Now →</div>
+  <div class="adm-contact">Call us: <strong id="admPhone1">8088854101</strong>  |  <strong id="admPhone2">7899454101</strong></div>
+  <a href="contact.html" class="adm-pill" style="text-decoration:none;" id="admBtn">Apply Now →</a>
 </div>
 
 <section class="about" id="about" style="background:white;">
   <div class="about-inner">
     <div class="about-image-wrap reveal">
-      <div class="about-img-bg">
-        <img id="aboutImg" src="./images/building.jpg" alt="School" onerror="this.style.display='none'"/>
-      </div>
-      <div class="about-card">
-        <div class="num" id="aboutEst">Est. 2018</div>
-        <div class="lbl">Year of Establishment</div>
+      <div class="about-img-bg"><img id="aboutImg" src="./images/building.jpg" alt="School" onerror="this.style.display='none'"/></div>
+      <div class="about-card" style="position:absolute;bottom:-24px;right:-24px;background:white;padding:20px;border-radius:16px;box-shadow:0 12px 40px rgba(107,200,255,0.2);">
+        <div class="num" id="aboutEst" style="font-family:'Playfair Display';font-size:32px;font-weight:700;color:var(--sky-deep);">Est. 2018</div>
+        <div class="lbl" style="font-size:12px;color:var(--muted);">Year of Establishment</div>
       </div>
     </div>
     <div class="reveal">
@@ -89,14 +62,14 @@
       <div class="about-features" id="aboutFeatures"></div>
       <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;">
         <a href="about.html" class="btn-primary">See More</a>
-        <a id="ytLink" href="https://www.youtube.com/@SarvothomukhaInternationalpubl/videos" class="btn-outline" target="_blank">Watch on YouTube</a>
+        <a id="ytLink" href="#" class="btn-outline" target="_blank">Watch on YouTube</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="teachers" id="teachers">
-  <div style="text-align:center;" class="reveal">
+<section class="teachers reveal" id="teachers" style="background:var(--sky-pale);">
+  <div style="text-align:center;">
     <div class="section-label">Our Leadership</div>
     <h2 class="section-title">Pillars of Sarvothomukha</h2>
     <p class="section-desc" style="margin:14px auto 0;">Our dedicated educators who shape the future of every student.</p>
@@ -104,20 +77,15 @@
   <div class="teachers-grid" id="teachersGrid"></div>
 </section>
 
-<section class="gallery-section" id="gallery">
-  <div style="text-align:center;" class="reveal">
+<section class="gallery-section reveal" id="gallery" style="background:white;">
+  <div style="text-align:center;">
     <div class="section-label">Gallery</div>
     <h2 class="section-title">Precious Moments</h2>
     <p class="section-desc" style="margin:14px auto 0;">A collection of our cherished memories — from classrooms to celebrations.</p>
   </div>
-  <div class="gallery-grid reveal" id="galleryGrid" style="margin-top:56px;"></div>
+  <div class="gallery-grid" id="galleryGrid"></div>
   <div style="text-align:center;margin-top:36px;"><a href="gallery.html" class="btn-primary">View Full Gallery →</a></div>
 </section>
-
-<div class="ann-strip" id="annStrip">
-  <div class="ann-strip-title">📢 Latest Announcements</div>
-  <div class="ann-list" id="annList"></div>
-</div>
 
 <section class="contact-section" id="contact">
   <div class="contact-inner">
@@ -126,9 +94,9 @@
       <h2 class="section-title">Contact Us Today</h2>
       <p class="section-desc">Reach out to learn more about admissions, programs, and life at Sarvothomukha.</p>
       <div class="contact-items">
-        <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-title">Phone</div><div class="contact-item-val"><span id="cPhone1">8088854101</span> | <span id="cPhone2">7899454101</span></div></div></div>
-        <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-title">Location</div><div class="contact-item-val" id="cAddress">#9 1st cross, GajananaNagar, HegganaHalli Cross, Bengaluru-560091 Karnataka, India</div></div></div>
-        <div class="contact-item"><div class="contact-icon">🕘</div><div><div class="contact-item-title">School Hours</div><div class="contact-item-val"><span id="cTime">9:30 AM – 4:20 PM</span></div></div></div>
+        <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-title">Phone</div><div class="contact-item-val"><span id="cPhone1"></span> | <span id="cPhone2"></span></div></div></div>
+        <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-title">Location</div><div class="contact-item-val" id="cAddress"></div></div></div>
+        <div class="contact-item"><div class="contact-icon">🕘</div><div><div class="contact-item-title">School Hours</div><div class="contact-item-val"><span id="cTime"></span></div></div></div>
       </div>
     </div>
     <div class="contact-form-box reveal">
@@ -141,11 +109,7 @@
         <div class="form-group"><label>Email</label><input type="email" id="fEmail" placeholder="you@example.com"/></div>
         <div class="form-group"><label>Inquiry Type</label>
           <select id="fType">
-            <option>Admission Enquiry</option>
-            <option>Fee Structure</option>
-            <option>Transport / Vehicle Facility</option>
-            <option>Academic Programs</option>
-            <option>Other</option>
+            <option>Admission Enquiry</option><option>Fee Structure</option><option>Transport / Vehicle Facility</option><option>Academic Programs</option><option>Other</option>
           </select>
         </div>
         <div class="form-group"><label>Message</label><textarea id="fMsg" rows="4" placeholder="Tell us how we can help…"></textarea></div>
@@ -160,9 +124,10 @@
   </div>
 </section>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5382959366943!2d77.50285967494513!3d13.00135581422546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3c50bc996a1b%3A0x271bf1be49043bcf!2sSarvothomukha%20International%20Public%20School!5e0!3m2!1sen!2sin!4v1694614439630!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
 <footer>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5382959366943!2d77.50285967494513!3d13.00135581422546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3c50bc996a1b%3A0x271bf1be49043bcf!2sSarvothomukha%20International%20Public%20School!5e0!3m2!1sen!2sin!4v1694614439630!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
   <p id="footerText">© 2025 <strong>Sarvothomukha International Public School</strong>. All rights reserved. Powered by <strong>ABTS Technologies</strong>.</p>
 
   <h4 style="color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Follow Us</h4>
@@ -200,105 +165,66 @@
 </footer>
 
 <script type="module">
-  import { SIPS } from './sips-data.js';
+  import { SIPS } from './js/sips-data.js';
 
-  // Helper to get element values safely
   const setTxt = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
   const setHtml = (id, val) => { const el = document.getElementById(id); if(el) el.innerHTML = val; };
-
   const ACT_ICONS = ['📚','💻','🥋','🎵','🧘','🙏','⭐','🎨'];
 
-  async function applyGalleryPreview() {
-  const galleryGrid = document.getElementById('galleryGrid');
-  if (!galleryGrid) return;
+  async function init() {
+    try {
+      const [s, h, adm, ab, t, c, gal] = await Promise.all([
+        SIPS.get('settings'), SIPS.get('hero'), SIPS.get('admission'), 
+        SIPS.get('about'), SIPS.get('teachers'), SIPS.get('contact'), SIPS.get('gallery')
+      ]);
 
-  // Wait for Firebase data
-  const fullGallery = await SIPS.get('gallery');
-  
-  // Take first 7 images for the home page preview
-  const g = fullGallery.slice(0, 7);
-
-  if (g.length === 0) {
-    galleryGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--muted);">No photos available yet.</p>`;
-    return;
-  }
-
-  galleryGrid.innerHTML = g.map((x, i) => {
-    // Check if it's the first item to make it a "Big Feature" tile
-    const isLarge = i === 0;
-    const itemStyle = isLarge ? 'grid-column: span 2; grid-row: span 2;' : '';
-    
-    return `
-      <div class="gallery-item" style="${itemStyle}">
-        <img src="${x.src}" alt="${x.alt}" loading="lazy" 
-             onerror="this.parentElement.style.display='none'">
-        <div class="gallery-overlay">
-          <span class="gallery-tag">${x.cat || 'School'}</span>
-        </div>
-      </div>`;
-  }).join('');
-}
-
-      // 5. Teachers/Leadership
-      const t = await SIPS.get('teachers');
-      setHtml('teachersGrid', t.map(x => `
-        <div class="teacher-card reveal">
-          <div class="teacher-avatar">${x.name[0]}</div>
-          <div class="teacher-role">${x.role}</div>
-          <div class="teacher-name">${x.name}</div>
-          <div class="teacher-qual">${x.qual}</div>
-        </div>`).join(''));
-
-      // 6. Contact Info
-      const c = await SIPS.get('contact');
-      setTxt('cPhone1', c.phone1); setTxt('cPhone2', c.phone2);
-      setTxt('cAddress', c.address);
-      setTxt('cTime', c.timeStart + ' – ' + c.timeEnd);
-
-      // Re-trigger animations
-      initReveal();
+      document.title = s.siteTitle; setHtml('footerText', s.footer);
+      if(s.primaryColor) document.documentElement.style.setProperty('--sky', s.primaryColor);
       
-    } catch (error) {
-      console.error("Initialization failed:", error);
-    }
+      setTxt('heroBadge', '✦ ' + h.badge);
+      setHtml('heroTitle', h.title.replace('Sarvothomukha', '<em>Sarvothomukha</em>'));
+      setTxt('heroTagline', h.tagline); setTxt('heroCtaBtn', h.ctaText);
+      setTxt('stat1val', h.stat1val); setTxt('stat1lbl', h.stat1lbl);
+      setTxt('stat2val', h.stat2val); setTxt('stat2lbl', h.stat2lbl);
+      setTxt('stat3val', h.stat3val); setTxt('stat3lbl', h.stat3lbl);
+
+      const banner = document.getElementById('admBanner');
+      if(banner) banner.style.display = adm.show ? 'flex' : 'none';
+      setTxt('admYear', adm.year); setTxt('admPhone1', adm.phone1); setTxt('admPhone2', adm.phone2); setTxt('admBtn', adm.btnText);
+
+      document.getElementById('aboutImg').src = ab.imageUrl;
+      setTxt('aboutEst', 'Est. ' + ab.founded); setTxt('aboutFounded', ab.founded); setTxt('aboutDesc', ab.description);
+      document.getElementById('aboutFeatures').innerHTML = ab.features.slice(0, 4).map((f, i) => `<div class="feature-chip"><div class="icon">${ACT_ICONS[i] || '⭐'}</div>${f}</div>`).join('');
+      document.getElementById('ytLink').href = ab.youtubeUrl;
+
+      setHtml('teachersGrid', t.map(x => `<div class="teacher-card reveal"><div class="teacher-avatar">${x.name[0]}</div><div class="teacher-role">${x.role}</div><div class="teacher-name">${x.name}</div><div class="teacher-qual">${x.qual}</div></div>`).join(''));
+
+      setTxt('cPhone1', c.phone1); setTxt('cPhone2', c.phone2); setTxt('cAddress', c.address); setTxt('cTime', c.timeStart + ' – ' + c.timeEnd);
+      if(c.youtube) document.getElementById('footerYT').href = c.youtube;
+      if(c.facebook) document.getElementById('footerFB').href = c.facebook;
+      if(c.instagram) document.getElementById('footerIG').href = c.instagram;
+
+      const g = gal.slice(0, 7);
+      document.getElementById('galleryGrid').innerHTML = g.length ? g.map((x, i) => `<div class="gallery-item" style="${i===0?'grid-column:span 2;grid-row:span 2;':''}"><img src="${x.src}" alt="${x.alt}" loading="lazy" onerror="this.parentElement.style.display='none'"><div class="gallery-overlay"><span class="gallery-tag">${x.cat||'School'}</span></div></div>`).join('') : '<p style="grid-column:1/-1;text-align:center;">No photos available.</p>';
+
+      initReveal();
+    } catch(e) { console.error(e); }
   }
 
-  // Mobile Menu Logic
-  document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('show');
-  });
+  document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('show'); });
 
-  // Reveal Animation Logic
   function initReveal() {
-    const obs = new IntersectionObserver(e => e.forEach(x => {
-      if(x.isIntersecting) x.target.classList.add('visible');
-    }), { threshold: 0.1 });
+    const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
   }
 
-  // Expose Enquiry function to window for the button click
   window.submitEnquiry = async function() {
-    const name = document.getElementById('fName').value.trim();
-    const phone = document.getElementById('fPhone').value.trim();
+    const name = document.getElementById('fName').value.trim(), phone = document.getElementById('fPhone').value.trim();
     if(!name || !phone) { alert('Please enter your name and phone number.'); return; }
-    
     const enqs = await SIPS.get('enquiries') || [];
-    enqs.unshift({
-      name, phone,
-      email: document.getElementById('fEmail').value,
-      type: document.getElementById('fType').value,
-      msg: document.getElementById('fMsg').value,
-      date: new Date().toLocaleDateString('en-IN'),
-      status: 'pending'
-    });
-    
-    const success = await SIPS.set('enquiries', enqs);
-    if(success) {
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    }
+    enqs.unshift({ name, phone, email: document.getElementById('fEmail').value, type: document.getElementById('fType').value, msg: document.getElementById('fMsg').value, date: new Date().toLocaleDateString('en-IN'), status: 'pending' });
+    if(await SIPS.set('enquiries', enqs)) { document.getElementById('formContent').style.display = 'none'; document.getElementById('formSuccess').style.display = 'block'; }
   };
-
   init();
 </script>
 </body>
